@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"io/ioutil"
+	"strings"
 )
 
 func check(e error) {
@@ -14,5 +15,12 @@ func check(e error) {
 func main() {
 	dat, err := ioutil.ReadFile("default")
 	check(err)
-	fmt.Print(string(dat))
+
+	data := string(dat)
+	lines := strings.Split(data, "\n")
+
+	for i := 0; i < len(lines); i++ {
+		fmt.Print(lines[i])
+		fmt.Print("\n")
+	}
 }
